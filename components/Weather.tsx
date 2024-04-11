@@ -37,7 +37,7 @@ const Weather: React.FC<CityDataType['coordinates']> = ({ lat, lon }) => {
                             {weatherData.weather.map((weather, index) => (
                                 <div key={index}>
                                     <p>{weather.main}: {weather.description}</p>
-                                    <Image src={`http://openweathermap.org/img/wn/${weather.icon}.png`} alt={weather.description} />
+                                    <img src={`http://openweathermap.org/img/wn/${weather.icon}.png`} alt={weather.description} />
                                 </div>
                             ))}
                         </div>

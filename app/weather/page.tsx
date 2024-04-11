@@ -4,18 +4,22 @@
 import Weather from "@/components/Weather";
 import { NextPage } from "next";
 import { useSearchParams } from "next/navigation";
+import React, { Suspense } from "react";
 
-const WeatherPage: NextPage = () => {
-
+const WeatherParams: React.FC = () => {
     const params = useSearchParams()
 
     const lat = parseInt(params.get("lat")!)
     const lon = parseInt(params.get("lon")!);
 
+    return (<Weather lat={lat} lon={lon} />)
+}
+
+const WeatherPage: NextPage = () => {
     return (
-        <main>
-            <Weather lat={lat} lon={lon} />
-        </main>
+        <Suspense>
+            <WeatherParams />
+        </Suspense>
     )
 }
 

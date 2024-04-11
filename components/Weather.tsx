@@ -2,6 +2,7 @@ import { Settings } from "@/config/setting";
 import { CityDataType } from "@/types/data";
 import { WeatherDataType, weatherDataTypeSchema } from "@/types/weather";
 import axios from "axios";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const Weather: React.FC<CityDataType['coordinates']> = ({ lat, lon }) => {
@@ -23,7 +24,7 @@ const Weather: React.FC<CityDataType['coordinates']> = ({ lat, lon }) => {
             }
         };
         fetchWeather()
-    }, [])
+    }, []);
 
     return (
         <main className="p-4">
@@ -36,7 +37,7 @@ const Weather: React.FC<CityDataType['coordinates']> = ({ lat, lon }) => {
                             {weatherData.weather.map((weather, index) => (
                                 <div key={index}>
                                     <p>{weather.main}: {weather.description}</p>
-                                    <img src={`http://openweathermap.org/img/wn/${weather.icon}.png`} alt={weather.description} />
+                                    <Image src={`http://openweathermap.org/img/wn/${weather.icon}.png`} alt={weather.description} />
                                 </div>
                             ))}
                         </div>
